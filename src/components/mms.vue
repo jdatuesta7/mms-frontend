@@ -52,7 +52,7 @@
       </div>
     </div>
 
-    <div v-if="calculated" class="max-w-xl mx-auto mt-3">
+    <div v-if="calculated" class="max-w-lg mx-auto mt-3">
       <div class="bg-gray-100 flex justify-center items-center">
         <div class="bg-white shadow-lg rounded-lg p-6 space-y-4">
           <h1 class="text-xl font-semibold">Resultados de Métricas</h1>
@@ -69,50 +69,4 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: 'HelloWorld',
-  data() {
-    return {
-      form: {
-        lambda: null,
-        s: null,
-        mu: null
-      },
-      results: {},
-      calculated: false,
-      title: 'Teoria de trafico y colas - MMS'
-    };
-  },
-  methods: {
-    async calculate() {
-      const requestBody = {
-        lambda: parseFloat(this.form.lambda),
-        mu: parseFloat(this.form.mu),
-        s: parseFloat(this.form.s)
-      };
-
-      try {
-        const response = await fetch('https://mms-backend-pc54-dev.fl0.io/calculate', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(requestBody)
-        });
-
-        if (response.ok) {
-          const data = await response.json();
-          this.results = data; 
-          console.log(data);
-          this.calculated = true;
-        } else {
-          console.error('Error:', response.statusText);
-        }
-      } catch (error) {
-        console.error('Error fetching data:', error.message);
-      }
-    }
-  }
-};
-</script>
+<script src="../assets/request"></script>
