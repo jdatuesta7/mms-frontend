@@ -52,20 +52,35 @@
       </div>
     </div>
 
-    <div v-if="calculated" class="max-w-lg mx-auto mt-3">
-      <div class="bg-gray-100 flex justify-center items-center">
-        <div class="bg-white shadow-lg rounded-lg p-6 space-y-4">
-          <h1 class="text-xl font-semibold">Resultados de Métricas</h1>
-          <ul>
-            <li v-for="(value, key) in results" :key="key" class="flex items-center space-x-2">
-              <span class="font-semibold">{{ key }}:</span>
-              <span class="text-green-500">{{ value }}</span>
-            </li>
-          </ul>
+    <div class="grid grid-cols-2 mt-6 gap-4">
+      <div class="mx-auto">
+        <div class="flex justify-center items-center">
+          <div class="bg-white shadow-lg rounded-lg p-6 space-y-4 ml-4">
+            <b>Número Promedio de Clientes en la Cola (Lq):</b> Esta métrica proporciona información sobre la congestión de la cola y la eficiencia del sistema al estimar el número promedio de clientes esperando servicio.
+            <br>
+            <b>Número Promedio de Clientes en el Sistema (L):</b> Se calcula el número promedio total de clientes en el sistema, incluyendo aquellos en la cola y aquellos que están siendo atendidos actualmente.
+            <br>
+            <b>Tiempo Promedio que un Cliente Pasa en la Cola (Wq):</b> Esta métrica calcula el tiempo promedio que un cliente pasa esperando en la cola antes de recibir servicio.
+            <br>
+            <b>Tiempo Promedio que un Cliente Pasa en el Sistema (W):</b> Se calcula el tiempo promedio general que un cliente pasa en el sistema, incluyendo tanto el tiempo en la cola como el tiempo de servicio.
+          </div>
+        </div>
+      </div>
+
+      <div v-if="calculated" class="mx-auto">
+        <div class="flex justify-center items-center">
+          <div class="bg-white shadow-lg rounded-lg p-6 space-y-4">
+            <h1 class="text-2xl font-semibold">Resultados de Métricas</h1>
+            <ul>
+              <li v-for="(value, key) in results" :key="key" class="flex items-center space-x-2">
+                <span class="font-semibold">{{ key }}:</span>
+                <span class="text-green-500">{{ value }}</span>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
-
   </div>
 </template>
 
